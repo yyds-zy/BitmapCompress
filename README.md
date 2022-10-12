@@ -18,7 +18,7 @@ adb pull /sdcard/Android/data/com.yyds.bitmapcompress/generate_pic  导出图片
                 options -= 10;
             }
 ```
-## 等比例压缩尺寸
+## 等比例压缩
 这里需要注意现在市面上流行的分辨率已经很高了，为了取中间值建议设置1080.在安卓发展过程中16-17年时建议取800.
 如果宽度大的话根据宽度固定大小缩放,如果高度高的话根据高度固定大小缩放. 取缩放比。设置给BitmapFactory.Options.
 通过BitmapFactory.decodeStream得到等比例压缩后的图片。
