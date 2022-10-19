@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingActivity">
+
+    <TextView
+        android:id="@+id/tv_quality_setting"
+        android:text="质量压缩"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#FF03DAC5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/line1"
+        android:layout_below="@+id/tv_quality_setting"
+        android:background="#EEF3F2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/lin_quality"
+        android:orientation="horizontal"
+        android:layout_below="@+id/line1"
+        android:layout_marginLeft="50dp"
+        android:gravity="left|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="质量调节:"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_quality"
+            android:layout_width="200dp"
+            android:progress="80"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_quality"
+            android:text="80"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_proportion_setting"
+        android:text="比例压缩"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#FF03DAC5"
+        android:layout_below="@+id/lin_quality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/line2"
+        android:layout_below="@+id/tv_proportion_setting"
+        android:background="#EEF3F2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/lin_proportion"
+        android:layout_below="@+id/line2"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:gravity="left|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="宽高调节:"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <SeekBar
+            android:id="@+id/seekbar_proportion"
+            android:layout_width="200dp"
+            android:progress="800"
+            android:max="1080"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_proportion"
+            android:text="800"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_mode_choose"
+        android:text="模式切换"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="#FF03DAC5"
+        android:layout_below="@+id/lin_proportion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:id="@+id/line3"
+        android:layout_below="@+id/tv_mode_choose"
+        android:background="#EEF3F2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/lin_mode"
+        android:layout_below="@+id/line3"
+        android:orientation="horizontal"
+        android:layout_marginLeft="50dp"
+        android:gravity="left|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="质量压缩"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:checked="false"/>
+
+            <RadioButton
+                android:id="@+id/radio_proportion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="等比例压缩"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:checked="false"/>
+
+            <RadioButton
+                android:id="@+id/radio_blend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="混合压缩"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:checked="false"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

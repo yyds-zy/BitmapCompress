@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/BitmapCompress/app/src/main/res/layout/activity_main.xml" value="0.3515625" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/activity_setting.xml" value="0.33" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/dialog_bottom_sheet.xml" value="0.18518518518518517" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/fragment_nested_scroll.xml" value="0.18518518518518517" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/fragment_recycler.xml" value="0.18518518518518517" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/fragment_view_pager.xml" value="0.18518518518518517" />
+        <entry key="..\:/BitmapCompress/app/src/main/res/layout/textview.xml" value="0.18518518518518517" />
       </map>
     </option>
   </component>

@@ -1,13 +1,19 @@
 package com.yyds.bitmapcompress.util;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ThumbnailUtils;
 import android.util.Log;
 
+import com.yyds.log.util.LogUtils;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Created by 阿飞の小蝴蝶 on 2022/10/12
@@ -20,23 +26,21 @@ public class BitmapUtils {
      * @param beforeBitmap 要压缩的图片
      * @return 压缩后的图片
      */
-     public static Bitmap compressImage(Bitmap beforeBitmap) {
-
+     public static Bitmap qualityCompressBitmap(Bitmap beforeBitmap) {
         // 可以捕获内存缓冲区的数据，转换成字节数组。
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         if (beforeBitmap != null) {
             // 第一个参数：图片压缩的格式；第二个参数：压缩的比率；第三个参数：压缩的数据存放到bos中
-            beforeBitmap.compress(Bitmap.CompressFormat.JPEG, 10, bos);
-
+            beforeBitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
             // 循环判断压缩后的图片大小是否满足要求，这里限制100kb，若不满足则继续压缩，每次递减10%压缩
-//            int options = 100;
-//            while (bos.toByteArray().length / 1024 > 100) {
-//                bos.reset();// 置为空
-//                beforeBitmap.compress(Bitmap.CompressFormat.JPEG, options, bos);
-//                options -= 10;
-//            }
-
+            int options = 100;
+            while (bos.toByteArray().length / 1024 > 100) {
+                bos.reset();// 置为空
+                beforeBitmap.compress(Bitmap.CompressFormat.JPEG, options, bos);
+                options -= 10;
+            }
             // 从bos中将数据读出来 转换成图片
+            LogUtils.v("current compress quality is " + options);
             ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
             Bitmap afterBitmap = BitmapFactory.decodeStream(bis);
             return afterBitmap;
@@ -89,13 +93,13 @@ public class BitmapUtils {
     }
 
     /**
-     * 图片压缩: 规定尺寸等比例压缩，宽高不能超过限制要求
+     * 图片压缩: 规定尺寸 等比例压缩 ，宽高不能超过限制要求
      * @param beforBitmap 要压缩的图片
      * @param maxWidth 最大宽度限制
      * @param maxHeight 最大高度限制
      * @return 压缩后的图片
      */
-     public static Bitmap compressBitmap(Bitmap beforBitmap, double maxWidth, double maxHeight) {
+     public static Bitmap equalProportionCompressBitmap(Bitmap beforBitmap, double maxWidth, double maxHeight) {
 
         // 图片原有的宽度和高度
         float beforeWidth = beforBitmap.getWidth();
@@ -125,7 +129,7 @@ public class BitmapUtils {
     }
 
     /**
-     * 图片按比例大小压缩方法
+     * 图片按比例大小压缩方法  参考
      * @param image （根据Bitmap图片压缩）
      * @return
      */
@@ -165,6 +169,32 @@ public class BitmapUtils {
         // 重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         isBm = new ByteArrayInputStream(baos.toByteArray());
         bitmap = BitmapFactory.decodeStream(isBm, null, newOpts);
-        return compressImage(bitmap);// 压缩好比例大小后再进行质量压缩
+        return bitmap;
+    }
+
+    /**
+     * 保存图片且设置图片质量  图片质量压缩
+     * @param context
+     * @param bitmap
+     */
+    public static void saveBitmap(Context context, Bitmap bitmap, int bitmapQuality) {
+        String savePath = Constant.ROOT_BITMAP_PATH + context.getPackageName() + Constant.GENERATE_BITMAP_PATH;
+        File filePic;
+        try {
+            filePic = new File(savePath + System.currentTimeMillis() + ".jpg");
+            if (!filePic.exists()) {
+                filePic.getParentFile().mkdirs();
+                filePic.createNewFile();
+            }
+            FileOutputStream fos = new FileOutputStream(filePic);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, bitmapQuality, fos);
+            fos.flush();
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            LogUtils.v("saveBitmap: failed " + e.getMessage());
+            return;
+        }
+        LogUtils.v("saveBitmap: " + filePic.getAbsolutePath());
     }
 }

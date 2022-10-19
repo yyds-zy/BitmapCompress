@@ -37,4 +37,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation 'com.github.yyds-zy:LogFrame:1.0.3'
+    implementation 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
+
+    implementation "biz.laenger.android:vpbs:0.0.6"
+
+    implementation'com.jakewharton:butterknife:10.2.3'
+    annotationProcessor'com.jakewharton:butterknife-compiler:10.2.3'
 }
