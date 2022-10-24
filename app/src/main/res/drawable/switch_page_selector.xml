@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/switch_page_choose_bg" android:state_checkable="true"/>
+    <item android:drawable="@drawable/switch_page_choose_bg" android:state_checked="true"/>
+
+    <item android:drawable="@drawable/switch_page_no_choose_bg" android:state_checkable="false"/>
+    <item android:drawable="@drawable/switch_page_no_choose_bg" android:state_checked="false"/>
+    <item android:drawable="@drawable/switch_page_no_choose_bg"/>
+</selector>

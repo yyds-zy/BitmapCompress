@@ -15,34 +15,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
-import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 import com.yyds.bitmapcompress.util.BitmapUtils;
 import com.yyds.bitmapcompress.util.Constant;
 import com.yyds.bitmapcompress.util.FileUtils;
 import com.yyds.bitmapcompress.util.SharedPreferenceUtil;
-import com.yyds.log.util.LogUtils;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.crypto.SecretKey;
-
-import biz.laenger.android.vpbs.BottomSheetUtils;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
