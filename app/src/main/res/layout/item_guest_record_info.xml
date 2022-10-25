@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="70dp"
+    android:id="@+id/rel_bg"
+    android:layout_marginBottom="15dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/guest_record_list_item_bg">
 
@@ -34,7 +36,7 @@
             android:layout_marginTop="8dp"
             android:layout_below="@+id/tv_race_date"
             android:layout_toRightOf="@+id/tv_left_country"
-            tools:text="  VS  "
+            android:text="  VS  "
             android:textSize="12sp"
             android:textColor="@color/white"
             android:layout_width="wrap_content"

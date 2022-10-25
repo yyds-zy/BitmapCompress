@@ -3,15 +3,14 @@ package com.yyds.bitmapcompress.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.yyds.bitmapcompress.R;
 import com.yyds.bitmapcompress.bean.RaceDataBean;
-
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by 阿飞の小蝴蝶 on 2022/10/24
@@ -19,10 +18,10 @@ import java.util.List;
  */
 public class RaceRecordViewAdapter extends RecyclerView.Adapter<RaceRecordViewAdapter.ViewHolder> {
 
-    private List<RaceDataBean> mRaceDataList;
+    private RaceDataBean mRaceData;
 
-    public RaceRecordViewAdapter(List<RaceDataBean> raceDataBeans){
-        mRaceDataList =  raceDataBeans;
+    public RaceRecordViewAdapter(RaceDataBean raceDataBean){
+        mRaceData =  raceDataBean;
     }
 
     @NonNull
@@ -35,22 +34,45 @@ public class RaceRecordViewAdapter extends RecyclerView.Adapter<RaceRecordViewAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        RaceDataBean raceDataBean = mRaceDataList.get(position);
-        //holder.textView.setText(raceDataBean);
+        RaceDataBean.RaceInfo raceInfoList = mRaceData.getRaceInfoList().get(position);
+        holder.textViewDate.setText(stampToDate(raceInfoList.getDate()));
+        holder.textViewLeftCountry.setText(raceInfoList.getLeftCountry());
+        holder.textViewRightCountry.setText(raceInfoList.getRightCountry());
+        holder.textViewWinner.setText(raceInfoList.getRace());
+        holder.textViewRaceResult.setText(raceInfoList.getResult());
+        if (position%2!=0){
+            holder.relativeLayout.setBackgroundResource(R.drawable.guest_record_list_item_bg);
+        } else {
+            holder.relativeLayout.setBackgroundResource(R.drawable.guest_record_list_item_bg2);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mRaceDataList.size();
+        return 5;
     }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        RelativeLayout relativeLayout;
+        TextView textViewDate,textViewLeftCountry,textViewRightCountry,textViewWinner,textViewRaceResult;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.tv_race_date);
+            relativeLayout = itemView.findViewById(R.id.rel_bg);
+            textViewDate = itemView.findViewById(R.id.tv_race_date);
+            textViewLeftCountry = itemView.findViewById(R.id.tv_left_country);
+            textViewRightCountry = itemView.findViewById(R.id.tv_right_country);
+            textViewWinner = itemView.findViewById(R.id.tv_country_winner);
+            textViewRaceResult = itemView.findViewById(R.id.tv_race_result);
         }
+    }
+
+    public static String stampToDate(long time) {
+        String res;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+        Date date = new Date(time);
+        res = simpleDateFormat.format(date);
+        return res;
     }
 }

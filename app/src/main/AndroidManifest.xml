@@ -11,13 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BitmapCompress">
         <activity
-            android:name=".GuestActivity"
-            android:exported="false" />
-        <activity
             android:name=".SettingActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GuestActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
