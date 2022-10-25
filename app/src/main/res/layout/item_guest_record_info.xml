@@ -8,6 +8,7 @@
     android:background="@drawable/guest_record_list_item_bg">
 
     <RelativeLayout
+        android:id="@+id/rel_race_info"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
         android:layout_width="wrap_content"
@@ -68,13 +69,14 @@
 
     <TextView
         android:id="@+id/tv_country_winner"
-        android:textSize="12sp"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="德国胜"
         android:layout_centerVertical="true"
-        android:layout_marginRight="120dp"
-        android:layout_toLeftOf="@+id/tv_race_result"/>
+        android:layout_marginLeft="100dp"
+        android:layout_toRightOf="@+id/rel_race_info"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:gravity="start"
+        tools:text="德国胜" />
 
 </RelativeLayout>

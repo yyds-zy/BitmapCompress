@@ -59,7 +59,7 @@ public class GuestActivity extends AppCompatActivity implements View.OnClickList
 
         textViewGuestCount.setText(raceDataBean.getRaceCount()+"");
         if (raceDataBean.getRanking() == 0) {
-            textViewRanking.setText("暂无排名");
+            textViewRanking.setText("暂没有排名");
         } else {
             textViewRanking.setText(raceDataBean.getRanking()+"");
         }
@@ -94,6 +94,17 @@ public class GuestActivity extends AppCompatActivity implements View.OnClickList
         mRecycleView.setLayoutManager(layoutManager);
     }
 
+    /**
+     * 刷新数据
+     * @param pagerNum
+     */
+    private void flushData(int pagerNum){
+        page = pagerNum;
+        int size = page * number + 1;
+        index = size - number;
+        loadData();
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -102,22 +113,14 @@ public class GuestActivity extends AppCompatActivity implements View.OnClickList
                     leftPagerNumberBtn.setSelected(true);
                     rightPagerNumberBtn.setSelected(false);
                 }
-                int parseInt = Integer.parseInt(leftPagerNumberTv.getText().toString());
-                page = parseInt;
-                int size = page * number + 1;
-                index = size - number;
-                loadData();
+                flushData(Integer.parseInt(leftPagerNumberTv.getText().toString()));
                 break;
             case R.id.rel_right_page_count:
                 if (leftPagerNumberBtn.isSelected()) {
                     leftPagerNumberBtn.setSelected(false);
                     rightPagerNumberBtn.setSelected(true);
                 }
-                int parseInt2 = Integer.parseInt(rightPagerNumberTv.getText().toString());
-                page = parseInt2;
-                int size2 = page * number + 1;
-                index = size2 - number;
-                loadData();
+                flushData(Integer.parseInt(rightPagerNumberTv.getText().toString()));
                 break;
             case R.id.tv_upper_page:
                 if (Integer.parseInt(leftPagerNumberTv.getText().toString()) == 1) return;
@@ -141,11 +144,7 @@ public class GuestActivity extends AppCompatActivity implements View.OnClickList
 
     private void clickNextPager(int choosePager){
         choosePager = choosePager + 2;
-        page = choosePager;
-        int size = page * number + 1;
-        index = size - number;
-
-        loadData();
+        flushData(choosePager);
 
         leftNumber = leftNumber + 2;
         rightNumber = rightNumber + 2;
@@ -155,17 +154,10 @@ public class GuestActivity extends AppCompatActivity implements View.OnClickList
 
     private void clickUpperPager(int choosePager) {
         choosePager = choosePager - 2;
-        page = choosePager;
-        int size = page * number + 1;
-        index = size - number;
-
-        loadData();
-
+        flushData(choosePager);
         leftNumber = leftNumber - 2;
         rightNumber = rightNumber - 2;
         leftPagerNumberTv.setText(leftNumber+"");
         rightPagerNumberTv.setText(rightNumber+"");
     }
-
-
 }
