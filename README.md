@@ -2,7 +2,7 @@
 图片批量压缩
 
 ## 导入图片
-adb push D:\zy_file\ori_pic\ /sdcard/Android/data/com.yyds.bitmapcompress  需要注意可以看到对应文件夹，我这边是集成了之前的FlyingLogFrame框架，在Application中默认初始化创建了外部存储私有路径。
+adb push D:\zy_file\ori_pic\ /sdcard/Android/data/com.yyds.bitmapcompress  需要注意可以看到对应文件夹，我这边是集成了之前的FlyingLogFrame(https://github.com/yyds-zy/LogFrame)框架，在Application中默认初始化创建了外部存储私有路径。
 
 ## 导出图片
 adb pull /sdcard/Android/data/com.yyds.bitmapcompress/generate_pic  导出图片文件夹到PC
